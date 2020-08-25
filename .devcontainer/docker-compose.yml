@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  apache:
+    build:
+      dockerfile: php7-apache-dockerfile.yml
+      context: .
+    image: 'php7.4-apache'
+    container_name: cakephp4-app1
+    restart: always
+    ports:
+      - '8001:80'
+    volumes:
+      - ../.:/var/www/html
+    depends_on:
+      - mysqldb
+    links:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:latest
+    container_name: cakephp4-mysql1
+    restart: always
+    ports:
+      - '3307:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD: root
+      - MYSQL_DATABASE: my_app
+      - MYSQL_USER: my_app
+      - MYSQL_PASSWORD: secret

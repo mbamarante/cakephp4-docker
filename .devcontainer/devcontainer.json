@@ -1,0 +1,22 @@
+{
+	"name": "PHP 7.4 + MySQL 5.8",
+	"dockerComposeFile": "docker-compose.yml", 
+	"service": "apache",
+	
+	"appPort": 8000,
+	
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+		
+	"remoteUser": "vscode",
+
+	"extensions": [
+		"felixfbecker.php-debug",
+		"felixfbecker.php-intellisense"
+	],
+
+	"workspaceMount": "source=remote-workspace,target=/var/www/html,type=volume",
+
+	"workspaceFolder": "/var/www/html"
+}
